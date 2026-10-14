@@ -1,126 +1,155 @@
 
 /* General page styling */
 body {
+    margin: 20px;
     font-family: Arial, sans-serif;
-    color: #2d0c24;
+    color: #4a1833;
+    background-color: #fff0f6;
     background-image: url("../images/PinkBackground.png");
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
-    margin: 30px;
-    line-height: 1.6;
 }
 
-/* Main recipe title */
+/* Main heading */
 h1 {
-    color: #8b245c;
     text-align: center;
-    font-family: Georgia, serif;
-    font-size: 38px;
-    background-color: #ffe4ef;
+    color: #a83270;
+    background-color: #ffe0ed;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
-/* Secondary heading */
+/* Other headings */
 h2 {
     color: #a83270;
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 28px;
 }
 
-/* Section headings */
 h3 {
     color: #8b245c;
-    border-bottom: 2px solid #d982ad;
-    padding-bottom: 5px;
-    margin-top: 30px;
 }
 
-/* Recipe description and footer paragraphs */
+/* Paragraphs */
 p {
-    font-size: 16px;
-    background-color: rgba(255, 240, 246, 0.85);
-    padding: 10px;
-    border-radius: 6px;
+    line-height: 1.5;
+}
+
+/* Links */
+a {
+    color: #8b245c;
 }
 
 /* Recipe image */
 img {
-    display: block;
-    height: 250px;
-    width: auto;
     max-width: 100%;
-    object-fit: contain;
-    margin: 20px auto;
-    border: 4px solid #e7a2c1;
-    border-radius: 12px;
+    height: auto;
+    border-radius: 8px;
 }
 
-/* Ingredient and direction lists */
-ul, ol {
-    background-color: rgba(255, 240, 246, 0.9);
-    padding: 20px 20px 20px 45px;
-    border-radius: 10px;
+/* Lists */
+ul,
+ol {
+    line-height: 1.6;
+    padding-left: 25px;
 }
 
-/* Individual list items */
 li {
     margin-bottom: 8px;
-    padding-left: 5px;
 }
 
-/* Recipe rating heading */
-.rate {
-    color: #b83275;
-    font-weight: bold;
+/* GRID LAYOUT */
+/* Makes two columns for the recipe sections */
+.recipe-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-/* Rating box */
-fieldset {
-    width: 250px;
-    max-width: 100%;
-    background-color: #fff0f6;
-    border: 2px solid #d982ad;
-    border-radius: 10px;
+/* Styling for each section */
+.recipe-intro,
+.ingredients,
+.rating-section,
+.conversion-section,
+.directions {
     padding: 15px;
+    background-color: rgba(255, 250, 253, 0.95);
+    border: 1px solid #e7a2c1;
+    border-radius: 10px;
 }
 
-/* Text inside the rating box */
+/* FLEXBOX LAYOUT */
+/* Places the rating and conversion sections side by side */
+.recipe-tools {
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 20px;
+}
+
+/* Gives both sections space */
+.rating-section,
+.conversion-section {
+    flex: 1;
+}
+
+/* Places the directions across both columns */
+.directions {
+    grid-column: 1 / 3;
+}
+
+/* Rating form */
+fieldset {
+    border: 1px solid #d982ad;
+    border-radius: 8px;
+    padding: 12px;
+}
+
 legend {
     color: #8b245c;
     font-weight: bold;
-    padding: 0 8px;
 }
 
-/* Radio buttons and conversion inputs */
-input {
-    accent-color: #b83275;
-    margin: 5px;
+/* Arranges the rating choices with Flexbox */
+.rating-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-/* Conversion input boxes */
-input[type="text"] {
-    width: 90px;
-    padding: 8px;
+.rating-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Conversion inputs */
+input[type="number"] {
+    width: 100px;
+    padding: 6px;
     border: 1px solid #d982ad;
     border-radius: 5px;
-    background-color: #fffafd;
-    color: #2d0c24;
 }
 
-/* Horizontal divider */
-hr {
-    border: none;
-    border-top: 2px solid #d982ad;
-    margin-top: 35px;
-}
-
-/* Footer paragraph */
+/* Footer */
 body > p:last-child {
     text-align: right;
-    font-size: 13px;
-    font-style: italic;
-    background-color: transparent;
+    font-size: 14px;
+}
+
+/* Makes the layout work on smaller screens */
+@media (max-width: 700px) {
+    body {
+        margin: 10px;
+    }
+
+    .recipe-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .recipe-tools {
+        grid-column: 1;
+        flex-direction: column;
+    }
+
+    .directions {
+        grid-column: 1;
+    }
 }
